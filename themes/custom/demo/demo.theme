@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+
+
+function preqube_preprocess_breadcrumb(&$variables) {
+  $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+  $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+  
+  $variables['headtitle'] = $page_title;  
+  $variables['breadcrumb'][] = array(
+    'text' => $page_title
+  );
+  $variables['#cache']['contexts'][] = 'url';
+}
+/*
+function preqube_preprocess_node(&$variables)
+{
+	$user = \Drupal::currentUser();
+	$current_path = \Drupal::service('path.current')->getPath();
+	$path_args = explode('/', $current_path);
+	
+	if($user->id() == 0 && $path_args[1] == 'node' && is_numeric($path_args[2]) && !$path_args[3]) 
+	{		
+		$response = new Symfony\Component\HttpFoundation\RedirectResponse(Drupal\Core\URL::fromUserInput('/404.html')->toString()); 		
+		$response->send();
+		return;
+	}
+}
+*/

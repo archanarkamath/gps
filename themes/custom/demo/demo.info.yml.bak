@@ -1,0 +1,9 @@
+core: 9.3.x
+type: theme
+name: 'Demo '
+description: 'Demo Basic template'
+libraries:
+- demo/global-styling
+base theme: bartik
+
+

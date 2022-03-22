@@ -1,0 +1,11 @@
+global-styling:
+  header: false
+  css:
+    theme:
+      css/demo.css: {}  
+  js: 
+    js/jquery.min.js: {}
+    js/demo.js: {}
+    
+  dependencies:
+    - bootstrap/theme

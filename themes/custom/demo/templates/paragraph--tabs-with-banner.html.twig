@@ -1,0 +1,23 @@
+<div>
+	<div>
+		{% if paragraph.field_banner_image.isempty %}
+			{% set class_tab_banner=""%}
+		{% else %}
+			{% set class_tab_banner="tabs-with-banner"%}
+			<img src=" {{ file_url(paragraph.field_banner_image.entity.field_media_image.entity.fileuri) }}" class="img-banner-tabs"/>
+		{% endif %}
+	</div>
+		<div class="{{class_tab_banner}}">
+			<div class="tab">			
+				{% for key, item in paragraph.field_tabs_on_banner if key|first != '#' %}
+					<button class="tablinks {{(key==0) ? 'tab_active' }} " onclick="opentab_banner(event, {{key}})">{{item.entity.field_tab_title_banner.value }}</button>
+				{% endfor %}	
+			</div>
+			{% for key, item in paragraph.field_tabs_on_banner if key|first != '#' %}
+				<div id="{{key}}" class="tabcontent {{(key==0) ? 'tabcontent-active' }}">
+					<h3>{{item.entity.field_tab_title_banner.value }}</h3>
+					<p>{{item.entity.field_tab_des.value |raw}}</p>
+				</div>
+			{% endfor %}
+	</div>
+</div>

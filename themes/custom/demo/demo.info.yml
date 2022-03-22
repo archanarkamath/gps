@@ -1,0 +1,9 @@
+core_version_requirement: ^8 || ^9
+type: theme
+name: 'Demo '
+description: 'Demo Basic template'
+libraries:
+- demo/global-styling
+base theme: bartik
+
+
